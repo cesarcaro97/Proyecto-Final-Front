@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { AUTH_USER, USERS_DATA } from '../../app-constants/localStorage';
+import { AUTH_USER } from '../../app-constants/localStorage';
 import { setLocalStorageData } from '../../utils/localStorage';
 import { DataContext, initialContext } from './Context';
 

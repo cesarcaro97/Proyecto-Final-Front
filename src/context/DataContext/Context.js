@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 import { USERS_DATA } from '../../app-constants/localStorage';
-import { getAuthData, getUserData } from '../../utils/localStorage';
+import { getAuthData, getUserData, setLocalStorageData } from '../../utils/localStorage';
+import { presetUsers } from '../utils';
 
 const checkInitialUsers = () => {
   const users = getUserData();

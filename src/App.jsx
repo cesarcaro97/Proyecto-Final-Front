@@ -1,12 +1,7 @@
-import { Fragment } from 'react';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Layout from './components/Layout';
 
 const App = () => (
-  <Fragment>
-    <Navbar />
-    <Home />
-  </Fragment>
+  <Layout />
 );
 
 export default App;

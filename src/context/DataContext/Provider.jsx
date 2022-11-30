@@ -11,9 +11,14 @@ const DataProvider = ({ children }) => {
   const setLoginUser = (user) => {
     dispatch({ auth: user });
     setLocalStorageData(AUTH_USER, user);
-  }
+  };
 
-  return <DataContext.Provider value={{ ...state, setLoginUser }}>{children}</DataContext.Provider>;
+  const logout = () => {
+    dispatch({ auth: null });
+    setLocalStorageData(AUTH_USER, null);
+  };
+
+  return <DataContext.Provider value={{ ...state, logout, setLoginUser }}>{children}</DataContext.Provider>;
 };
 
 export default DataProvider;

@@ -23,6 +23,7 @@ const checkAuth = () => {
 export const initialContext = {
   users: checkInitialUsers(),
   auth: checkAuth(),
+  events: [],
   error: null,
 };
 

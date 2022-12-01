@@ -1,6 +1,7 @@
 import { useData } from '../context/DataContext/Context';
 import { useUI } from '../context/ViewContext/Context';
 import { LockClosedIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { auth, logout } = useData();
@@ -10,13 +11,13 @@ const Navbar = () => {
     <nav className="mx-auto px-4 sm:px-6 bg-blue-500">
       <div className="flex items-center justify-between py-5 sm:space-x-12">
         <div className="flex justify-start sm:w-0 sm:flex-1">
-          <a href="#">
+          <Link to="/">
             <img
               className="w-auto h-12"
               src="https://tuboleta.com/img/ic_logotuboleta.svg"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="items-center justify-end sm:flex sm:flex-1">
           {!auth ? (

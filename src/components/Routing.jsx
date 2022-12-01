@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route } from 'react-router-dom';
 
 import { useData } from '../context/DataContext/Context';
+import Events from '../pages/Events';
 import Home from '../pages/Home';
 
 const Routing = () => {
@@ -11,7 +12,7 @@ const Routing = () => {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/events" element={null} />
       <Route exact path="/events/:eventId" element={null} />
-      {auth && auth.role === 'SELLER' ? <Route exact path="/admin" element={null} /> : null}
+      {auth && auth.role === 'SELLER' ? <Route exact path="/admin" element={<Events />} /> : null}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

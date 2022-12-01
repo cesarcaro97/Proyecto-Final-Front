@@ -1,6 +1,8 @@
 import { useData } from '../context/DataContext/Context';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 
-const thClass = "px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-600 tracking-wider";
+const thClass =
+  'px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-600 tracking-wider';
 
 const EventsTable = () => {
   const { events } = useData();
@@ -10,179 +12,67 @@ const EventsTable = () => {
       <table className="min-w-full leading-normal">
         <thead>
           <tr>
-            <th className={thClass}>
-              Imagen
-            </th>
-            <th className={thClass}>
-              Nombre
-            </th>
-            <th className={thClass}>
-              Fecha
-            </th>
-            <th className={thClass}>
-              Lugar
-            </th>
-            <th className={thClass}>
-              Ciudad
-            </th>
-            <th className={thClass}>
-              Dirección
-            </th>
-            <th className={thClass}>
-              Hora
-            </th>
-            <th className={thClass}>
-              Categoría
-            </th>
-            <th className={thClass}>
-              Edad Minima de Ingreso
-            </th>
-            <th className={thClass}>
-              Responsable
-            </th>
-            <th className={thClass}>
-              Nit
-            </th>
+            <th className={thClass}>Imagen</th>
+            <th className={thClass}>Nombre</th>
+            <th className={thClass}>Fecha</th>
+            {/* <th className={thClass}>Lugar</th> */}
+            <th className={thClass}>Ciudad</th>
+            {/* <th className={thClass}>Dirección</th> */}
+            <th className={thClass}>Hora</th>
+            <th className={thClass}>Categoría</th>
+            <th className={thClass} />
+            {/* <th className={thClass}>Edad Minima de Ingreso</th> */}
+            {/* <th className={thClass}>Responsable</th> */}
+            {/* <th className={thClass}>Nit</th> */}
           </tr>
         </thead>
         <tbody>
           {events && events.length ? (
-            <>
-              <tr>
+            events.map(({ id, image, name, date, city, hour, category }) => (
+              <tr key={id}>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex items-center">
                   <div className="flex-shrink-0 w-10 h-10">
-                    <img
-                      className="w-full h-full rounded-full"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                      alt=""
-                    />
+                    <img className="w-full h-full rounded-full" src={image} alt={name} />
                   </div>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Admin</p>
+                  <p className="text-gray-900 whitespace-no-wrap">{name}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Jan 21, 2020</p>
+                  <p className="text-gray-900 whitespace-no-wrap">{date}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">43</p>
+                  <p className="text-gray-900 whitespace-no-wrap">{city}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                    ></span>
-                    <span className="relative">Activo</span>
-                  </span>
+                  <p className="text-gray-900 whitespace-no-wrap">{hour}</p>
                 </td>
-              </tr>
-              <tr>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 w-10 h-10">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-gray-900 whitespace-no-wrap">Blake Bowman</p>
-                    </div>
+                  <p className="text-gray-900 whitespace-no-wrap">{category}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div className="flex space-x-2 items-center">
+                    <Link to={`/events/${id}`}>
+                      <button
+                        type="button"
+                        className="flex justify-center items-center rounded-full bg-blue-500 text-white shadow-md hover:bg-blue-400 hover:shadow-lg transition duration-150 ease-in-out w-9 h-9"
+                      >
+                        <PencilIcon className="h-5 w-5" aria-hidden="true" />
+                      </button>
+                    </Link>
+                    <button
+                      type="button"
+                      className="flex justify-center items-center rounded-full bg-blue-500 text-white shadow-md hover:bg-blue-400 hover:shadow-lg transition duration-150 ease-in-out w-9 h-9"
+                    >
+                      <TrashIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
                   </div>
                 </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Editor</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Jan 01, 2020</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">77</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                    ></span>
-                    <span className="relative">Activo</span>
-                  </span>
-                </td>
               </tr>
-              <tr>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 w-10 h-10">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-gray-900 whitespace-no-wrap">Dana Moore</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Editor</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Jan 10, 2020</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">64</p>
-                </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 bg-orange-200 opacity-50 rounded-full"
-                    ></span>
-                    <span className="relative">Suspended</span>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-5 py-5 bg-white text-sm">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 w-10 h-10">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-gray-900 whitespace-no-wrap">Alonzo Cox</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-5 py-5 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Admin</p>
-                </td>
-                <td className="px-5 py-5 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
-                </td>
-                <td className="px-5 py-5 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">70</p>
-                </td>
-                <td className="px-5 py-5 bg-white text-sm">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                    ></span>
-                    <span className="relative">Inactive</span>
-                  </span>
-                </td>
-              </tr>
-            </>
+            ))
           ) : (
             <tr>
-              <td className="px-5 py-5 bg-white text-sm text-center">
+              <td className="px-5 py-5 bg-white text-sm text-center" colSpan={6}>
                 <p className="text-gray-900 whitespace-no-wrap">No hay ningún evento registrado.</p>
               </td>
             </tr>

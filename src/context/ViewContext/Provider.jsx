@@ -1,7 +1,6 @@
 import { useReducer } from 'react';
+import { stateReducer } from '../../utils/reducer';
 import { ViewContext, initialContext } from './Context';
-
-const stateReducer = (prevState, newState) => ({ ...prevState, ...newState });
 
 const ViewProvider = ({ children }) => {
   const [state, dispatch] = useReducer(stateReducer, initialContext);

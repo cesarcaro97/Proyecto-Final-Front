@@ -46,19 +46,18 @@ const LoginModal = () => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-gray-900 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                   <div className="w-full max-w-md space-y-8">
                     <div>
-                      <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-gray-900">
+                      <h2 className="mt-4 text-center text-3xl font-bold tracking-tight">
                         Ingresa a tu cuenta
                       </h2>
                     </div>
                     <form className="mt-8 space-y-6">
-                      <input type="hidden" name="remember" defaultValue="true" />
                       <div className="-space-y-px rounded-md shadow-sm">
                         <div className="py-2">
-                          <label htmlFor="username" className="block text-sm text-gray-900">
+                          <label htmlFor="username" className="block text-sm">
                             Nombre de Usuario
                           </label>
                           <input
@@ -66,12 +65,12 @@ const LoginModal = () => {
                             name="username"
                             autoComplete="username"
                             required
-                            className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
+                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
                             onChange={(event) => setUsername(event.target.value)}
                           />
                         </div>
                         <div className="py-2">
-                          <label htmlFor="password" className="block text-sm text-gray-900">
+                          <label htmlFor="password" className="block text-sm">
                             Contraseña
                           </label>
                           <input
@@ -80,7 +79,7 @@ const LoginModal = () => {
                             type="password"
                             autoComplete="current-password"
                             required
-                            className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
+                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
                             onChange={(event) => setPassword(event.target.value)}
                           />
                         </div>

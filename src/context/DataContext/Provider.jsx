@@ -1,9 +1,8 @@
 import { useReducer } from 'react';
 import { AUTH_USER } from '../../app-constants/localStorage';
 import { setLocalStorageData } from '../../utils/localStorage';
+import { stateReducer } from '../../utils/reducer';
 import { DataContext, initialContext } from './Context';
-
-const stateReducer = (prevState, newState) => ({ ...prevState, ...newState });
 
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(stateReducer, initialContext);
@@ -18,7 +17,20 @@ const DataProvider = ({ children }) => {
     setLocalStorageData(AUTH_USER, null);
   };
 
-  return <DataContext.Provider value={{ ...state, logout, setLoginUser }}>{children}</DataContext.Provider>;
+  const addEvent = (event) => {
+    dispatch({ events: [...state.events, event] });
+  };
+
+  const deleteEvent = (eventId) => {
+    const newEvents = state.events.filter((event) => event.id === eventId);
+    dispatch({ events: newEvents });
+  };
+
+  return (
+    <DataContext.Provider value={{ ...state, addEvent, deleteEvent, logout, setLoginUser }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 export default DataProvider;

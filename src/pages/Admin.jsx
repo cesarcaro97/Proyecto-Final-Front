@@ -21,7 +21,7 @@ const Admin = () => {
         </div>
       </header>
       <main>
-        <div className="mx-auto max-w-8xl py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-8xl px-8">
           <EventsTable />
         </div>
       </main>

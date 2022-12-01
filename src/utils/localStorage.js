@@ -1,4 +1,4 @@
-import { AUTH_USER, USERS_DATA } from '../app-constants/localStorage';
+import { AUTH_USER, EVENTS_DATA, USERS_DATA } from '../app-constants/localStorage';
 
 export const getLocalStorageData = (id) => {
   const localStorageData = JSON.parse(localStorage.getItem(id));
@@ -9,7 +9,7 @@ export const setLocalStorageData = (id, data) => {
   localStorage.setItem(id, JSON.stringify(data));
 }
 
-export const getUserData = () => {
+export const getUsersData = () => {
   const users = getLocalStorageData(USERS_DATA);
   return users;
 };
@@ -17,4 +17,9 @@ export const getUserData = () => {
 export const getAuthData = () => {
   const users = getLocalStorageData(AUTH_USER);
   return users;
+};
+
+export const getEventsData = () => {
+  const events = getLocalStorageData(EVENTS_DATA);
+  return events;
 };

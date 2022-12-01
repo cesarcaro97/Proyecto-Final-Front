@@ -1,11 +1,14 @@
 import { useData } from '../context/DataContext/Context';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import { eventCategories } from '../app-constants/eventCategories';
+import { eventCities } from '../app-constants/eventCities';
 
 const thClass =
   'px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-600 tracking-wider';
 
 const EventsTable = () => {
-  const { events } = useData();
+  const { deleteEvent, events } = useData();
 
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -42,17 +45,17 @@ const EventsTable = () => {
                   <p className="text-gray-900 whitespace-no-wrap">{date}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">{city}</p>
+                  <p className="text-gray-900 whitespace-no-wrap">{eventCities[city]}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <p className="text-gray-900 whitespace-no-wrap">{hour}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap">{category}</p>
+                  <p className="text-gray-900 whitespace-no-wrap">{eventCategories[category]}</p>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div className="flex space-x-2 items-center">
-                    <Link to={`/events/${id}`}>
+                    <Link to={`/admin/${id}`}>
                       <button
                         type="button"
                         className="flex justify-center items-center rounded-full bg-blue-500 text-white shadow-md hover:bg-blue-400 hover:shadow-lg transition duration-150 ease-in-out w-9 h-9"
@@ -63,6 +66,7 @@ const EventsTable = () => {
                     <button
                       type="button"
                       className="flex justify-center items-center rounded-full bg-blue-500 text-white shadow-md hover:bg-blue-400 hover:shadow-lg transition duration-150 ease-in-out w-9 h-9"
+                      onClick={() => deleteEvent(id)}
                     >
                       <TrashIcon className="h-5 w-5" aria-hidden="true" />
                     </button>

@@ -1,4 +1,5 @@
 import { Navigate, Routes, Route } from 'react-router-dom';
+import { SELLER } from '../app-constants/roles';
 
 import { useData } from '../context/DataContext/Context';
 import AddEditEvent from '../pages/AddEditEvent';
@@ -15,7 +16,7 @@ const Routing = () => {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/register" element={<Register />} />
       <Route exact path="/event/:eventId" element={<Event />} />
-      {auth && auth.role === 'SELLER' ? (
+      {auth && auth.role === SELLER ? (
         <>
           <Route exact path="/admin" element={<Admin />} />
           <Route exact path="/admin/:id" element={<AddEditEvent />} />

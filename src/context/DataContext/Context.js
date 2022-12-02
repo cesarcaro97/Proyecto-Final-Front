@@ -32,7 +32,6 @@ export const initialContext = {
   users: checkInitialUsers(),
   auth: checkAuth(),
   events: checkEvents(),
-  error: null,
 };
 
 export const DataContext = createContext(initialContext);

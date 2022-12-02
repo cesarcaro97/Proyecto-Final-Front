@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
-import { USERS_DATA } from '../../app-constants/localStorage';
+import { EVENTS_DATA, USERS_DATA } from '../../app-constants/localStorage';
 import { getAuthData, getEventsData, getUsersData, setLocalStorageData } from '../../utils/localStorage';
-import { presetUsers } from '../utils';
+import { presetEvents, presetUsers } from '../utils';
 
 const checkInitialUsers = () => {
   const users = getUsersData();
@@ -23,7 +23,8 @@ const checkAuth = () => {
 const checkEvents = () => {
   const events = getEventsData();
   if (!events) {
-    return [];
+    setLocalStorageData(EVENTS_DATA, presetEvents);
+    return presetEvents;
   }
   return events;
 }

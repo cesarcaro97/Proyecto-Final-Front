@@ -42,7 +42,7 @@ const AddEditEvent = () => {
     event.preventDefault();
     if (isNewEvent) {
       addEvent(state);
-      dispatch(initialReducer);
+      dispatch({ ...initialReducer, id: uuidv4() });
     } else {
       editEvent(state);
       navigate('/admin');

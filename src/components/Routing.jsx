@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext/Context';
 import AddEditEvent from '../pages/AddEditEvent';
 import Admin from '../pages/Admin';
 import Home from '../pages/Home';
+import Register from '../pages/Register';
 
 const Routing = () => {
   const { auth } = useData();
@@ -11,8 +12,8 @@ const Routing = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/events" element={null} />
-      <Route exact path="/events/:eventId" element={null} />
+      <Route exact path="/register" element={<Register />} />
+      <Route exact path="/event/:eventId" element={null} />
       {auth && auth.role === 'SELLER' ? (
         <>
           <Route exact path="/admin" element={<Admin />} />

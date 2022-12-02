@@ -4,5 +4,5 @@ export const eventCities = {
   cartagena: 'Cartagena',
   cali: 'Cali',
   medellin: 'Medellín',
-  'santa marta': 'Santa marta',
+  'santa marta': 'Santa Marta',
 };

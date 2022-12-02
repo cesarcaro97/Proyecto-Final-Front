@@ -4,7 +4,7 @@ import { BUYER, SELLER } from '../app-constants/roles';
 export const presetUsers = [
   {
     id: uuidv4(),
-    name: 'Pepito',
+    firstname: 'Pepito',
     lastname: 'Perez',
     username: 'buyer',
     password: '123',
@@ -12,7 +12,7 @@ export const presetUsers = [
   },
   {
     id: uuidv4(),
-    name: 'Juan',
+    firstname: 'Juan',
     lastname: 'Ramirez',
     username: 'seller',
     password: '1234',

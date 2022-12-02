@@ -1,9 +1,23 @@
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom';
 import { eventCategories } from '../app-constants/eventCategories';
 import { eventCities } from '../app-constants/eventCities';
+import { useData } from '../context/DataContext/Context';
+import { useUI } from '../context/ViewContext/Context';
 
 const EventCard = ({ event }) => {
   const { id, name, image, date, hour, city, category } = event;
+  const { auth } = useData();
+  const { setShowLogin } = useUI();
+  const navigate = useNavigate();
+
+  const onClickBuyHandler = () => {
+    if (auth) {
+      navigate(`/event/${id}`)
+      return;
+    }
+    setShowLogin(true);
+  }
 
   return (
     <div className="flex justify-center">
@@ -31,10 +45,11 @@ const EventCard = ({ event }) => {
           </div>
           <button
             type="button"
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white font-medium leading-tight rounded shadow-md hover:bg-blue-400 hover:shadow-lg focus:bg-blue-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-150 ease-in-out"
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-sm text-white font-medium leading-tight rounded shadow-md hover:bg-blue-400 hover:shadow-lg focus:bg-blue-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-150 ease-in-out"
+            onClick={onClickBuyHandler}
           >
             <span className="inset-y-0 left-0 flex items-center">
-              <ShoppingCartIcon className="h-5 w-5" aria-hidden="true" />
+              <ShoppingCartIcon className="h-4 w-4" aria-hidden="true" />
             </span>
             <span>Comprar</span>
           </button>

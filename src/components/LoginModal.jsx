@@ -3,21 +3,28 @@ import { Dialog, Transition } from '@headlessui/react';
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 import { useUI } from '../context/ViewContext/Context';
 import { useData } from '../context/DataContext/Context';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginModal = () => {
   const { users, setLoginUser } = useData();
   const { showLogin, setShowLogin } = useUI();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const login = () => {
-    const userData = users.find(user => user.username === username && user.password === password);
+    const userData = users.find((user) => user.username === username && user.password === password);
     if (userData) {
       setLoginUser(userData);
       setShowLogin(false);
       return;
     }
     console.log('User not found!');
+  };
+
+  const onClickRegisterHandler = () => {
+    setShowLogin(false);
+    navigate('/register');
   };
 
   return (
@@ -55,7 +62,7 @@ const LoginModal = () => {
                       </h2>
                     </div>
                     <form className="mt-8 space-y-6">
-                      <div className="-space-y-px rounded-md shadow-sm">
+                      <div className="-space-y-px rounded-md">
                         <div className="py-2">
                           <label htmlFor="username" className="block text-sm">
                             Nombre de Usuario
@@ -65,7 +72,7 @@ const LoginModal = () => {
                             name="username"
                             autoComplete="username"
                             required
-                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
+                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm mt-1"
                             onChange={(event) => setUsername(event.target.value)}
                           />
                         </div>
@@ -79,27 +86,31 @@ const LoginModal = () => {
                             type="password"
                             autoComplete="current-password"
                             required
-                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-1"
+                            className="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm mt-1"
                             onChange={(event) => setPassword(event.target.value)}
                           />
                         </div>
                       </div>
 
-                      <div>
-                        <button
-                          type="button"
-                          className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-200"
-                          disabled={!username || !password}
-                          onClick={login}
-                        >
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <LockClosedIcon
-                              className={`h-5 w-5 text-indigo-500 ${username && password && 'group-hover:text-indigo-400'}`}
-                              aria-hidden="true"
-                            />
-                          </span>
-                          Ingresar
-                        </button>
+                      <button
+                        type="button"
+                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-500 py-2 px-4 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 disabled:bg-blue-200"
+                        disabled={!username || !password}
+                        onClick={login}
+                      >
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                          <LockClosedIcon
+                            className={`h-5 w-5 text-blue-500 ${
+                              username && password && 'group-hover:text-blue-400'
+                            }`}
+                            aria-hidden="true"
+                          />
+                        </span>
+                        Ingresar
+                      </button>
+
+                      <div className="text-center">
+                        <span className="text-xs text-blue-500 hover:text-blue-400 cursor-pointer" onClick={onClickRegisterHandler}>Registrate Aquí</span>
                       </div>
                     </form>
                   </div>

@@ -1,4 +1,5 @@
 import AdminBanner from '../components/AdminBanner';
+import AllEvents from '../components/AllEvents';
 import FeaturedEvents from '../components/FeaturedEvents';
 import { useData } from '../context/DataContext/Context';
 import { isSeller } from '../utils/auth';
@@ -10,6 +11,7 @@ const Home = () => {
     <>
       {isSeller(auth) && <AdminBanner />}
       <FeaturedEvents />
+      <AllEvents />
     </>
   );
 };

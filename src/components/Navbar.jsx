@@ -36,7 +36,10 @@ const Navbar = () => {
             </button>
           ) : (
             <Menu as="div" className="relative ml-3">
-              <div>
+              <div className="flex items-center space-x-2">
+              <div className="block px-4 py-2 font-bold text-sm text-white">
+                    Hola, {`${auth.firstname} ${auth.lastname}`}
+                  </div>
                 <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <img
                     className="h-8 w-8 rounded-full"
